@@ -4,5 +4,7 @@ Punto de entrada para Render
 """
 
 from app import app
+from asgiref.wsgi import WsgiToAsgi
 
-# La aplicación Flask está disponible como 'app'
+# Convertir aplicación Flask (WSGI) a ASGI
+asgi_app = WsgiToAsgi(app)

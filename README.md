@@ -68,7 +68,7 @@ El archivo CSV debe contener las siguientes columnas:
 3. **Crea** un nuevo Web Service
 4. **Configura**:
    - Build Command: `chmod +x build.sh && ./build.sh`
-   - Start Command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
+   - Start Command: `uvicorn main:asgi_app --host 0.0.0.0 --port $PORT`
 5. **Despliega** automáticamente
 
 ### Instalación Local
@@ -87,7 +87,7 @@ python crispdm_inmuebles.py --data ./sample_data.csv
 python app.py
 
 # O ejecutar con Uvicorn (producción)
-uvicorn app:app --host 0.0.0.0 --port 5000 --reload
+uvicorn main:asgi_app --host 0.0.0.0 --port 5000 --reload
 ```
 
 ### Uso de la API
