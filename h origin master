@@ -1,0 +1,5 @@
+[33m05c8b6c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m Enhance model loading in app.py with multiple path checks, update build.sh to use train_model.py, and improve README with build process and troubleshooting sections. Remove outdated test_local.py script.
+[33mf4ca4ce[m Rename Flask app variable for ASGI conversion and update README and render.yaml to reflect the new entry point for Uvicorn.
+[33m777c353[m Integrate ASGI support by converting Flask app to ASGI using asgiref, update README and render.yaml to reflect changes in app entry point, and adjust requirements to include asgiref.
+[33m99e5755[m Refactor build.sh to always train the model, update README with new file structure and clarify app entry point, and modify render.yaml to use main.py for starting the application with Uvicorn.
+[33maa650b7[m Update project configuration: modify .gitignore to allow specific pickle files, replace Gunicorn with Uvicorn in app.py, enhance build.sh for Uvicorn verification and model training, update README with new file structure and usage instructions, and add Uvicorn to requirements.
