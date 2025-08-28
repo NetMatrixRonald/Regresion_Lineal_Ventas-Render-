@@ -54,10 +54,16 @@ precios_casa.csv
 
 # Modelos y artefactos (NO versionar en GitHub)
 *.joblib
-*.pkl
 *.pth
 *.h5
 *.pb
+
+# Permitir archivos pickle específicos del proyecto
+!columns.pkl
+!requirements.pkl
+!modelo_venta.pkl
+!configuracion.pkl
+!metadata.pkl
 
 # Logs
 *.log
@@ -97,5 +103,5 @@ docs/_build/
 deployment/
 artifacts/
 
-# Archivos de Render
-render.yaml
+# Archivos de Render (NO ignorar - necesario para despliegue)
+# render.yaml

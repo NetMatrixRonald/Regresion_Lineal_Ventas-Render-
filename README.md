@@ -32,8 +32,13 @@ El archivo CSV debe contener las siguientes columnas:
 ├── 📄 sample_data.csv           # Datos de ejemplo
 ├── 📄 requirements.txt          # Dependencias
 ├── 📄 build.sh                  # Script de build para Render
-├── 📄 gunicorn.conf.py          # Configuración de Gunicorn
+├── 📄 uvicorn.conf.py           # Configuración de Uvicorn
 ├── 📄 render.yaml               # Configuración de Render
+├── 📄 columns.pkl               # Columnas del modelo
+├── 📄 requirements.pkl          # Requerimientos del proyecto
+├── 📄 modelo_venta.pkl          # Información del modelo
+├── 📄 configuracion.pkl         # Configuración de la app
+└── 📄 metadata.pkl              # Metadatos del proyecto
 ├── 📄 LICENSE                   # Licencia MIT
 ├── 📄 .gitignore                # Archivos ignorados por Git
 ├── 📄 README.md                 # Documentación principal
@@ -42,9 +47,15 @@ El archivo CSV debe contener las siguientes columnas:
 
 ### Archivos NO incluidos en GitHub
 - `precios_casa.csv` - Dataset completo (muy grande)
-- `*.pkl` - Archivos pickle generados
 - `*.joblib` - Modelos entrenados (se generan en Render)
 - `artifacts/` - Directorio de artefactos generados
+
+### Archivos pickle incluidos
+- `columns.pkl` - Columnas del modelo
+- `requirements.pkl` - Requerimientos del proyecto
+- `modelo_venta.pkl` - Información completa del modelo
+- `configuracion.pkl` - Configuración de la aplicación
+- `metadata.pkl` - Metadatos del proyecto
 
 ## 🚀 Instalación y Ejecución
 
@@ -54,7 +65,7 @@ El archivo CSV debe contener las siguientes columnas:
 3. **Crea** un nuevo Web Service
 4. **Configura**:
    - Build Command: `chmod +x build.sh && ./build.sh`
-   - Start Command: `python app.py`
+   - Start Command: `uvicorn app:app --host 0.0.0.0 --port $PORT`
 5. **Despliega** automáticamente
 
 ### Instalación Local
@@ -69,8 +80,11 @@ pip install -r requirements.txt
 # Entrenar modelo
 python crispdm_inmuebles.py --data ./sample_data.csv
 
-# Ejecutar aplicación web
+# Ejecutar aplicación web (desarrollo)
 python app.py
+
+# O ejecutar con Uvicorn (producción)
+uvicorn app:app --host 0.0.0.0 --port 5000 --reload
 ```
 
 ### Uso de la API
@@ -172,6 +186,38 @@ response = requests.post('http://localhost:5000/api/predict',
 result = response.json()
 print(f"Precio estimado: ${result['prediction']:.0f}k")
 ```
+
+### Ventajas de Uvicorn
+- **Rendimiento superior**: Servidor ASGI más rápido que Gunicorn
+- **Mejor manejo de conexiones**: Soporte nativo para WebSockets
+- **Configuración optimizada**: Timeouts y concurrencia optimizados
+- **Logs mejorados**: Información detallada de requests y errores
+
+## 📦 Archivos Pickle
+
+El proyecto incluye archivos pickle que contienen información importante del modelo y configuración:
+
+### Archivos Generados
+- **`columns.pkl`**: Lista de columnas del modelo (`['size', 'bedrooms', 'age']`)
+- **`requirements.pkl`**: Requerimientos del proyecto y configuración del modelo
+- **`modelo_venta.pkl`**: Información completa del modelo (métricas, coeficientes, ejemplos)
+- **`configuracion.pkl`**: Configuración de la aplicación web y API
+- **`metadata.pkl`**: Metadatos del proyecto y metodología CRISP-DM
+
+### Archivos Pickle Incluidos
+Los archivos pickle ya están generados y listos para usar:
+- `columns.pkl` - Columnas del modelo
+- `requirements.pkl` - Requerimientos del proyecto  
+- `modelo_venta.pkl` - Información completa del modelo
+- `configuracion.pkl` - Configuración de la aplicación
+- `metadata.pkl` - Metadatos del proyecto
+
+### Uso en la Aplicación
+Los archivos pickle se cargan automáticamente en la aplicación para:
+- Validación de datos de entrada
+- Información del modelo en la API
+- Configuración del servidor
+- Metadatos del proyecto
 
 ## 📊 Flujo CRISP-DM Implementado
 
