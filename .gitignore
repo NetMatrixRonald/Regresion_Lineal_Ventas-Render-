@@ -1,0 +1,101 @@
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Entornos virtuales
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDEs y editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Archivos de datos (NO versionar en GitHub)
+*.xlsx
+*.xls
+*.json
+*.parquet
+*.h5
+*.hdf5
+
+# Datos completos (NO versionar)
+precios_casa.csv
+
+# Permitir datos de ejemplo
+!sample_data.csv
+
+# Modelos y artefactos (NO versionar en GitHub)
+*.joblib
+*.pkl
+*.pth
+*.h5
+*.pb
+
+# Logs
+*.log
+logs/
+
+# Archivos temporales
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# Configuración local
+.env
+.env.local
+.env.production
+
+# Archivos de backup
+*.bak
+*.backup
+
+# Archivos de cache
+.cache/
+.pytest_cache/
+
+# Archivos de cobertura
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
+
+# Archivos de documentación generados
+docs/_build/
+
+# Archivos de despliegue y artefactos
+deployment/
+artifacts/
+
+# Archivos de Render
+render.yaml
