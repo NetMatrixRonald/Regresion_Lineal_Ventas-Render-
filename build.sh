@@ -13,7 +13,7 @@ mkdir -p artifacts
 
 # Entrenar modelo
 echo "🤖 Entrenando modelo..."
-python crispdm_inmuebles.py --data ./sample_data.csv
+python train_model.py
 
 # Verificar que el modelo se creó correctamente
 if [ -f "artifacts/modelo.joblib" ] && [ -f "artifacts/scaler.joblib" ]; then

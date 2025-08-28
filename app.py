@@ -188,14 +188,50 @@ HTML_TEMPLATE = """
 def load_model():
     """Cargar modelo y scaler"""
     try:
-        if os.path.exists(MODEL_PATH) and os.path.exists(SCALER_PATH):
-            modelo = joblib.load(MODEL_PATH)
-            scaler = joblib.load(SCALER_PATH)
+        # Lista de posibles rutas para buscar los archivos
+        possible_model_paths = [
+            './artifacts/modelo.joblib',
+            './modelo.joblib',
+            'artifacts/modelo.joblib',
+            'modelo.joblib'
+        ]
+        
+        possible_scaler_paths = [
+            './artifacts/scaler.joblib',
+            './scaler.joblib',
+            'artifacts/scaler.joblib',
+            'scaler.joblib'
+        ]
+        
+        # Buscar el modelo
+        modelo = None
+        scaler = None
+        
+        for model_path in possible_model_paths:
+            if os.path.exists(model_path):
+                print(f"✅ Modelo encontrado en: {model_path}")
+                modelo = joblib.load(model_path)
+                break
+                
+        for scaler_path in possible_scaler_paths:
+            if os.path.exists(scaler_path):
+                print(f"✅ Scaler encontrado en: {scaler_path}")
+                scaler = joblib.load(scaler_path)
+                break
+        
+        if modelo is not None and scaler is not None:
+            print("✅ Modelo y scaler cargados exitosamente")
             return modelo, scaler
         else:
+            print("❌ No se encontraron los archivos del modelo")
+            print(f"Buscando en directorio actual: {os.getcwd()}")
+            print(f"Archivos disponibles: {os.listdir('.')}")
+            if os.path.exists('artifacts'):
+                print(f"Archivos en artifacts: {os.listdir('artifacts')}")
             return None, None
+            
     except Exception as e:
-        print(f"Error cargando modelo: {e}")
+        print(f"❌ Error cargando modelo: {e}")
         return None, None
 
 def predict_price(size, bedrooms, age):

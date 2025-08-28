@@ -71,6 +71,24 @@ El archivo CSV debe contener las siguientes columnas:
    - Start Command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
 5. **Despliega** automáticamente
 
+### **Proceso de Build:**
+- ✅ Instalación automática de dependencias
+- ✅ Entrenamiento del modelo durante el build
+- ✅ Verificación de archivos del modelo
+- ✅ Configuración de Uvicorn
+
+### **Troubleshooting:**
+
+#### **Problema: Modelo no cargado**
+Si obtienes `"model_loaded": false` en el health check:
+1. Verifica que el build se completó exitosamente
+2. Revisa los logs de build en Render
+3. El modelo se entrena automáticamente durante el build
+
+#### **Problema: Error WSGI/ASGI**
+Si obtienes errores de compatibilidad:
+- ✅ Ya resuelto con `asgiref` y `main.py`
+
 ### Instalación Local
 ```bash
 # Clonar repositorio
