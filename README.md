@@ -27,22 +27,25 @@ El archivo CSV debe contener las siguientes columnas:
 
 ```
 📦 crispdm-inmuebles/
-├── 📄 app.py                    # Aplicación Flask para Render
+├── 📄 app.py                    # Aplicación Flask + Uvicorn
+├── 📄 main.py                   # Punto de entrada para Render
+
 ├── 📄 crispdm_inmuebles.py      # Script principal de entrenamiento
 ├── 📄 sample_data.csv           # Datos de ejemplo
 ├── 📄 requirements.txt          # Dependencias
 ├── 📄 build.sh                  # Script de build para Render
 ├── 📄 uvicorn.conf.py           # Configuración de Uvicorn
 ├── 📄 render.yaml               # Configuración de Render
-├── 📄 columns.pkl               # Columnas del modelo
-├── 📄 requirements.pkl          # Requerimientos del proyecto
-├── 📄 modelo_venta.pkl          # Información del modelo
-├── 📄 configuracion.pkl         # Configuración de la app
-└── 📄 metadata.pkl              # Metadatos del proyecto
 ├── 📄 LICENSE                   # Licencia MIT
 ├── 📄 .gitignore                # Archivos ignorados por Git
 ├── 📄 README.md                 # Documentación principal
-└── 📄 RESUMEN_PROYECTO.md       # Resumen ejecutivo
+├── 📄 RESUMEN_PROYECTO.md       # Resumen ejecutivo
+└── 📦 Archivos Pickle:
+    ├── 📄 columns.pkl           # Columnas del modelo
+    ├── 📄 requirements.pkl      # Requerimientos del proyecto
+    ├── 📄 modelo_venta.pkl      # Información del modelo
+    ├── 📄 configuracion.pkl     # Configuración de la app
+    └── 📄 metadata.pkl          # Metadatos del proyecto
 ```
 
 ### Archivos NO incluidos en GitHub
@@ -65,7 +68,7 @@ El archivo CSV debe contener las siguientes columnas:
 3. **Crea** un nuevo Web Service
 4. **Configura**:
    - Build Command: `chmod +x build.sh && ./build.sh`
-   - Start Command: `uvicorn app:app --host 0.0.0.0 --port $PORT`
+   - Start Command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
 5. **Despliega** automáticamente
 
 ### Instalación Local
